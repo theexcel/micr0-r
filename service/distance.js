@@ -1,8 +1,6 @@
 const request = require('request')
 
-const apiKey =
-	process.env.ZIPCODE_API_KEY ||
-	'Z715IdoQJFMF3OYy1lt40DT5BmvV3vedtyxoCmkmVhDTmex3A8VtbrlFpNvzNcPI'
+const apiKey = process.env.ZIPCODE_API_KEY 
 
 const zipCodeURL = process.env.ZIPCODE_API_URL
 
