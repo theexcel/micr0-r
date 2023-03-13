@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../src/app.ts');
 var debug = require('debug')('microservice:server');
 var http = require('http');
+
 
 /**
  * Get port from environment and store in Express.

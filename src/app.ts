@@ -1,8 +1,15 @@
 import createError from 'http-errors';
-import express, {Express, Request, Response} from 'express';
+import express, {
+	Request,
+	Response,
+	NextFunction,
+} from 'express'
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -28,14 +35,19 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (
+	err: any,
+	req: Request,
+	res: Response,
+	next: NextFunction
+) {
+	// set locals, only providing error in development
+	res.locals.message = err.message
+	res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+	// render the error page
+	res.status(err.status || 500)
+	res.render('error')
+})
 
 module.exports = app;
