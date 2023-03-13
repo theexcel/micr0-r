@@ -8,11 +8,9 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var app = (0, express_1.default)();
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const app = (0, express_1.default)();
 // view engine setup
 app.set('views', path_1.default.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -36,4 +34,4 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-module.exports = app;
+exports.default = app;

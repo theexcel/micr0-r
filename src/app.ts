@@ -1,4 +1,4 @@
-import createError from 'http-errors';
+import createError, {HttpError} from 'http-errors';
 import express, {
 	Request,
 	Response,
@@ -7,14 +7,12 @@ import express, {
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import dotenv from 'dotenv';
 
-dotenv.config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +34,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function (
-	err: any,
+	err: HttpError,
 	req: Request,
 	res: Response,
 	next: NextFunction
@@ -50,4 +48,4 @@ app.use(function (
 	res.render('error')
 })
 
-module.exports = app;
+export default app;

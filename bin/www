@@ -4,7 +4,10 @@
  * Module dependencies.
  */
 
-var app = require('../src/app.ts');
+const dotenv = require('dotenv')
+dotenv.config()
+
+var app = require('../dist/app').default;
 var debug = require('debug')('microservice:server');
 var http = require('http');
 
